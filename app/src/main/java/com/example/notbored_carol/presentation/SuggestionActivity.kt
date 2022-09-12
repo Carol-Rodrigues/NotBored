@@ -7,6 +7,7 @@ import android.view.View
 import com.example.notbored_carol.R
 import com.example.notbored_carol.data.Category
 import com.example.notbored_carol.databinding.ActivitySuggestionBinding
+import com.example.notbored_carol.infra.ProjectConstants
 import com.example.notbored_carol.infra.SecPreferences
 import com.example.notbored_carol.infra.SecurityPreferences
 import kotlin.random.Random
@@ -71,10 +72,10 @@ class SuggestionActivity : AppCompatActivity(), View.OnClickListener {
         binding.twListTitle.text = filteredList[indexAllList].title
 
         when (actionsList[indexActions].price) {
-            0.0 -> binding.twPriceType.text = "Free"
-            in 0.1..0.3 -> binding.twPriceType.text = "Low"
-            in 0.4..0.6 -> binding.twPriceType.text = "Medium"
-            in 0.7..1.0 -> binding.twPriceType.text = "High"
+            0.0 -> binding.twPriceType.text = ProjectConstants.PRICERANGE.FREE
+            in 0.1..0.3 -> binding.twPriceType.text = ProjectConstants.PRICERANGE.LOW
+            in 0.4..0.6 -> binding.twPriceType.text = ProjectConstants.PRICERANGE.MEDIUM
+            in 0.7..1.0 -> binding.twPriceType.text = ProjectConstants.PRICERANGE.HIGH
         }
     }
 }

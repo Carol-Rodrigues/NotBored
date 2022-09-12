@@ -9,11 +9,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notbored_carol.R
 import com.example.notbored_carol.data.ActivitiesModel
+import com.example.notbored_carol.infra.ProjectConstants
 import com.example.notbored_carol.infra.SecPreferences
 import com.example.notbored_carol.infra.SecurityPreferences
 import com.example.notbored_carol.presentation.SuggestionActivity
 
-// O ViewHolder tbm é uma classe abstrata e por isso precisamos criá-la.
+// O ViewHolder tbm é uma classe abstrata e por isso precisamos criá-la a parte (pois não pode ser
+// instanciada)
 // É a VH que tem a referência para os elementos de interface
 class ActivitiesAdapter(private val actList: List<ActivitiesModel>):
   RecyclerView.Adapter<ActivitiesAdapter.ActivitiesViewHolder>() {
@@ -43,7 +45,7 @@ class ActivitiesAdapter(private val actList: List<ActivitiesModel>):
                 SecPreferences().storeCategory(intent, "CATEGORY", catTitle)
                 //SecurityPreferences(intent).storeCategory("CATEGORY", catTitle)
             } else {
-                SecPreferences().storeCategory(intent, "CATEGORY", "Random")
+                SecPreferences().storeCategory(intent, "CATEGORY", ProjectConstants.CATEGORY.RANDOM)
                 //SecurityPreferences(context).storeCategory("CATEGORY", "Random")
             }
             //intent.putExtra("Category Title", catTitle)
