@@ -1,6 +1,6 @@
 package com.example.notbored_carol.data
 
-data class ActivitiesModel(val type: String, val image: Int)
+//data class ActivitiesModel(val type: String, val image: Int)
 
 data class Category(
     val title: String,

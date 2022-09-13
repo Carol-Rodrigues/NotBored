@@ -24,6 +24,7 @@
         android:layout_height="40dp"
         android:layout_margin="10dp"
         app:tint="@color/dark_blue"
+        android:src="@drawable/ic_baseline_navigate_next_24"
         app:layout_constraintBottom_toTopOf="@+id/divider"
         app:layout_constraintEnd_toEndOf="parent" />
 

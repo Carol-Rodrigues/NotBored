@@ -4,20 +4,18 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notbored_carol.R
-import com.example.notbored_carol.data.ActivitiesModel
+import com.example.notbored_carol.data.Category
 import com.example.notbored_carol.infra.ProjectConstants
 import com.example.notbored_carol.infra.SecPreferences
-import com.example.notbored_carol.infra.SecurityPreferences
 import com.example.notbored_carol.presentation.SuggestionActivity
 
 // O ViewHolder tbm é uma classe abstrata e por isso precisamos criá-la a parte (pois não pode ser
 // instanciada)
 // É a VH que tem a referência para os elementos de interface
-class ActivitiesAdapter(private val actList: List<ActivitiesModel>):
+class ActivitiesAdapter(private val actList: List<Category>):
   RecyclerView.Adapter<ActivitiesAdapter.ActivitiesViewHolder>() {
 
     // Crio o layout. É chamado para cada item da RecyclerView
@@ -32,14 +30,14 @@ class ActivitiesAdapter(private val actList: List<ActivitiesModel>):
     override fun onBindViewHolder(holder: ActivitiesViewHolder, position: Int) {
         val activitiesViewModel = actList[position]
 
-        holder.actName.text = activitiesViewModel.type
-        holder.imgNavigate.setImageResource(activitiesViewModel.image)
+        holder.actName.text = activitiesViewModel.title
+        //holder.imgNavigate.setImageResource(R.drawable.ic_baseline_navigate_next_24)
 
         holder.itemView.setOnClickListener {
             view: View -> Unit
             val context = holder.actName.context
             val intent = Intent(context, SuggestionActivity::class.java)
-            val catTitle = activitiesViewModel.type
+            val catTitle = activitiesViewModel.title
 
             if (catTitle != "") {
                 SecPreferences().storeCategory(intent, "CATEGORY", catTitle)
@@ -63,7 +61,7 @@ class ActivitiesAdapter(private val actList: List<ActivitiesModel>):
     // O itemView são os elementos que iremos definir em nosso Layout
     class ActivitiesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val actName: TextView = itemView.findViewById(R.id.tw_category)
-        val imgNavigate: ImageView = itemView.findViewById(R.id.iw_navigate)
+        //val imgNavigate: ImageView = itemView.findViewById(R.id.iw_navigate)
 
     }
 }

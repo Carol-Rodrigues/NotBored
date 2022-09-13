@@ -8,7 +8,7 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.notbored_carol.R
 import com.example.notbored_carol.adapter.ActivitiesAdapter
-import com.example.notbored_carol.data.ActivitiesModel
+import com.example.notbored_carol.data.Category
 import com.example.notbored_carol.databinding.ActivityActivitiesBinding
 import com.example.notbored_carol.domain.ActivitiesRepository
 import com.example.notbored_carol.infra.SecPreferences
@@ -22,7 +22,7 @@ class ActivitiesActivity : AppCompatActivity(), View.OnClickListener {
     private val ActivitiesRepository = ActivitiesRepository()
 
     // Array da classe Model
-    private val activitiesData = ArrayList<ActivitiesModel>()
+    private val activitiesData = ArrayList<Category>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,7 +65,7 @@ class ActivitiesActivity : AppCompatActivity(), View.OnClickListener {
         val categories = ActivitiesRepository.getCategories()
 
         for (elements in categories) {
-            activitiesData.add(ActivitiesModel(elements.title, R.drawable.ic_baseline_navigate_next_24))
+            activitiesData.add(Category(elements.title))
         }
     }
 }
