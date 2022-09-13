@@ -11,6 +11,7 @@ import com.example.notbored_carol.adapter.ActivitiesAdapter
 import com.example.notbored_carol.data.Category
 import com.example.notbored_carol.databinding.ActivityActivitiesBinding
 import com.example.notbored_carol.domain.ActivitiesRepository
+import com.example.notbored_carol.infra.ProjectConstants
 import com.example.notbored_carol.infra.SecPreferences
 import com.example.notbored_carol.infra.SecurityPreferences
 
@@ -21,7 +22,7 @@ class ActivitiesActivity : AppCompatActivity(), View.OnClickListener {
     // Instanciando classe repository
     private val ActivitiesRepository = ActivitiesRepository()
 
-    // Array da classe Model
+    // Array da classe Category
     private val activitiesData = ArrayList<Category>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,7 +55,7 @@ class ActivitiesActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(view: View) {
         if (view.id == R.id.bt_random) {
             val intent = Intent(this, SuggestionActivity::class.java)
-            SecPreferences().storeCategory(intent, "CATEGORY", "Random")
+            SecPreferences().storeCategory(intent, "CATEGORY", ProjectConstants.CATEGORY.RANDOM)
             //intent.putExtra("Category Title", "Random")
             startActivity(intent)
         }
